@@ -1,14 +1,13 @@
 <template lang="pug">
+
 div.container
   el-button(type="primary" @click='goClassSelect').buttonHome 授業選択
 
   el-button(type="primary").buttonHome 学生一覧
-
 </template>
 
 
 <script>
-
 export default {
   data: () => ({
 
@@ -22,5 +21,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+
+
+<style lang="scss" scoped>
+
 </style>
