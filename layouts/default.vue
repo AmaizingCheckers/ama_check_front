@@ -1,7 +1,9 @@
 <template lang="pug">
-div
-  TheHeader
-  nuxt
+el-container
+  el-header
+    TheHeader
+  el-main
+    nuxt
 </template>
 
 <script>
