@@ -1,9 +1,8 @@
 <template lang="pug">
 div
-  el-low
-    el-button(type="primary" @click='goClassSelect')#button 授業選択
+  el-button(type="primary" @click='goClassSelect')#button 授業選択
 
-    el-button(type="primary")#button 学生一覧
+  el-button(type="primary")#button 学生一覧
 
 </template>
 
