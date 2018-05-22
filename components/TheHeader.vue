@@ -1,6 +1,8 @@
 <template lang="pug">
-div
-  h1 アメチェク！
+div#Header
+  span#Header-Title アメチェク！
+  span#Header-Logout ログアウト
+
 </template>
 
 <script>
