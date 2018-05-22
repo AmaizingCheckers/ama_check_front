@@ -1,7 +1,7 @@
 <template lang="pug">
-div
-  span アメチェク！
-  span ログアウト
+div#Header
+  span#Header-Title アメチェク！
+  span#Header-Logout ログアウト
 
 </template>
 
