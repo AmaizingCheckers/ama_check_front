@@ -1,0 +1,90 @@
+<template lang="pug">
+div.result-container
+  h1.result-list 出席者一覧
+  el-table(:data='tableData')
+    el-table-column(label='No', width='100%')
+      template(v-for="(row,index) in tableData", slot-scope='scope')
+        span {{ scope.$index + 1 }}
+    el-table-column(label='名前')
+      template(v-for="(row,index) in tableData", slot-scope='scope')
+        span {{ scope.row }}
+    el-table-column
+      template(v-for="(row,index) in tableData", slot-scope='scope')
+        div.button-container
+          el-button(size='mini', type='danger', @click='handleDelete(scope.row), centerDialogVisible = true') 欠席
+
+  el-dialog(:visible.sync='centerDialogVisible', width='45%')
+    div.dialog-comment
+      span この学生を欠席してもよろしいですか？
+    div.dialog-button
+      el-button.dialog-delete(type='danger', @click='handleDelete(scope.row), centerDialogVisible = false') 欠席
+      el-button.dialog-back(type='primary', @click='centerDialogVisible = false') 戻る
+</template>
+
+<script>
+export default {
+   data() {
+     return {
+       centerDialogVisible: false,
+       tableData: ['川田大秀','川田小秀','川田中秀','川田安蛇']
+    }
+   },
+
+  methods: {
+    handleDelete(row) {
+        alert(row);
+      }
+  }
+ }
+</script>
+
+<style lang="scss" scoped>
+.result-container{
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.result-list{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.el-table{
+  font-size: 17px;
+}
+
+.button-container{
+  text-align: right;
+}
+
+.el-button{
+  width: 70px;
+  font-size: 16px;
+}
+
+.dialog-comment{
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.dialog-button{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dialog-back{
+  margin-left: 60px;
+  width: 80px;
+  font-size: 16px;
+}
+
+.dialog-delete{
+  margin-right: 60px;
+  width: 80px;
+  font-size: 16px;
+}
+</style>
