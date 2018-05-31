@@ -1,15 +1,18 @@
+//
 export const state = () => ({
-  results: []
+  result: []
 })
 
 export const mutations = () => ({
   setResult (state, result) {
-    state.results = result
+    state.result = result
   }
 })
 
 export const getters = () => ({
-
+  getResult(state){
+    return state.result
+  }
 })
 
 export const actions = () => ({

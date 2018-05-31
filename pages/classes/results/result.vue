@@ -22,20 +22,24 @@ div.result-container
 </template>
 
 <script>
+import { mapActions,mapGetters } from 'vuex'
 export default {
    data() {
      return {
        centerDialogVisible: false,
-       tableData: ['川田大秀','川田小秀','川田中秀','川田安蛇']
+       tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人']
     }
    },
-
   methods: {
     handleDelete(row) {
         alert(row);
-      }
+    }
+
+//- ...mapActions('result', ['find']),
+//- ...mapGetters('getters', ['getResult'])
+//-
   }
- }
+}
 </script>
 
 <style lang="scss" scoped>
