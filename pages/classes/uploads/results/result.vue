@@ -2,7 +2,7 @@
 div.result-container
   h1.result-list 出席者一覧
   el-table(:data='tableData')
-    el-table-column(label='No', width='100%')
+    el-table-column(label='No', width='80%')
       template(v-for="(row,index) in tableData", slot-scope='scope')
         span {{ scope.$index + 1 }}
     el-table-column(label='名前')
@@ -90,5 +90,46 @@ export default {
   margin-right: 60px;
   width: 80px;
   font-size: 16px;
+}
+//スマホ対応css
+@media (max-width: 599px) {
+  .result-container{
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .result-list{
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+  .el-table{
+    font-size: 13px;
+  }
+
+  .el-button{
+    margin-left: 27px;
+    width: 53px;
+    font-size: 11px;
+  }
+
+  .dialog-comment{
+    font-size: 10px;
+    text-align: center;
+    padding: 16px;
+    margin-bottom: 50px;
+  }
+
+  .dialog-back{
+    width: 50px;
+    font-size: 12px;
+  }
+
+  .dialog-delete{
+    width: 50px;
+    font-size: 12px;
+  }
 }
 </style>
