@@ -3,7 +3,7 @@ div.upload-container
   div.upload-block(v-if='!image')
     i.el-icon-plus
   div(v-else)
-    img(:src='image')
+    img.upload-image(:src='image')
   div.camera-block
     label.camera-btn(for='file_photo')
       img.camera-icon(src='/camera.png', alt='button')
@@ -13,12 +13,15 @@ div.upload-container
 </template>
 
 <script>
+import axios from 'axios';
+import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     image: '',
-    uploadFile:''
+    uploadFile: null
   }),
   methods: {
+    //画像ファイル保存
     onFileChange: function(e){
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) {
@@ -30,6 +33,7 @@ export default {
       this.createImage(files[0]);
       this.uploadFile = files[0];
     },
+    //画像ファイル表示
     createImage(file) {
       var image = new Image();
       var reader = new FileReader();
@@ -39,19 +43,22 @@ export default {
       };
       reader.readAsDataURL(file);
     },
+    //画像ファイル送信
     submitImage: function(e) {
-      var formData = new FormData();
+      let  formData = new FormData();
       formData.append('subject_id', '1');
       formData.append('image', this.uploadFile);
-      var config = {
+      console.log(formData.get('subject_id'));
+      console.log(formData.get('image'));
+      let config = {
           headers: {
               'content-type': 'multipart/form-data'
           }
       };
       axios
-       .post('post.php', formData, config)
+       .post('results/result', formData, config)
        .then(function(response) {
-           console.log(response);
+          console.log(response);
            // response 処理
        })
        .catch(function(error) {
@@ -65,8 +72,8 @@ export default {
 <style lang="scss" scoped>
 .upload-container{
   margin-top: 40px;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 33%;
+  margin-right: 33%;
 
 }
 
@@ -80,6 +87,10 @@ export default {
 .el-icon-plus{
   font-size: 35px;
   color: #70BDFF;
+}
+
+.upload-image{
+  width: 100%;
 }
 
 .input{
@@ -121,11 +132,11 @@ export default {
 @media (max-width: 599px) {
   .upload-container{
     margin-top: 30px;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 28%;
+    margin-right: 28%;
   }
 
-  img {
+  .upload-image{
     width: 100%;
   }
 
