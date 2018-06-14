@@ -18,7 +18,7 @@ export const getters = () => ({
 export const actions = () => ({
   async find ({dispatch, commit}, { params = null }) {
     try {
-      const result = await dispatch('api/get', { url: '/result', params: params }, { root: true })
+      const result = await dispatch('api/get', { url: '/api/v1/history_students/attendance_result?history_id=${historyId}', params: params }, { root: true })
       commit('setResult', result)
       return result
     } catch (e) {

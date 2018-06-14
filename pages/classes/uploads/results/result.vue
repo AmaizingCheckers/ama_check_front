@@ -24,17 +24,19 @@ div.result-container
 <script>
 import { mapActions,mapGetters } from 'vuex'
 export default {
-   data() {
-     return {
-       centerDialogVisible: false,
-       tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人']
+  data() {
+    return {
+      centerDialogVisible: false,
+      tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人']
     }
    },
-  methods: {
+   created () {
+    this.historyId = this.$route.params.historyId
+   },
+   methods: {
     handleDelete(row) {
-        alert(row);
+      alert(row);
     }
-
 //- ...mapActions('result', ['find']),
 //- ...mapGetters('getters', ['getResult'])
 //-
