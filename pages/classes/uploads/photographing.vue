@@ -18,7 +18,8 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     image: '',
-    uploadFile: null
+    uploadFile: null,
+    history_id:''
   }),
   methods: {
     //画像ファイル保存
