@@ -10,7 +10,6 @@ div.upload-container
     input.input#file_photo(type="file" @change="onFileChange")
   div.btn-block
     el-button.upload-btn(type="primary", @click="submitImage") アップロード
-    p subject_id: {{subject_id}}
 </template>
 
 <script>
