@@ -10,17 +10,24 @@ div.upload-container
     input.input#file_photo(type="file" @change="onFileChange")
   div.btn-block
     el-button.upload-btn(type="primary", @click="submitImage") アップロード
+    p subject_id: {{subject_id}}
 </template>
 
 <script>
 import axios from 'axios';
-import { mapGetters } from 'vuex'
+import { mapAction,mapGetters } from 'vuex'
 export default {
   data: () => ({
     image: '',
     uploadFile: null,
-    history_id:''
+    subject_id: null
   }),
+  asyncData(context) {
+    return {
+      // queryデータ取得
+      subject_id: context.query['subjectId']
+    }
+  },
   methods: {
     //画像ファイル保存
     onFileChange: function(e){
@@ -47,7 +54,7 @@ export default {
     //画像ファイル送信
     submitImage: function(e) {
       let  formData = new FormData();
-      formData.append('subject_id', '1');
+      formData.append('subject_id', this.subject_id);
       formData.append('image', this.uploadFile);
       console.log(formData.get('subject_id'));
       console.log(formData.get('image'));
@@ -57,9 +64,10 @@ export default {
           }
       };
       axios
-       .post('results/result', formData, config)
+       .post('/api/v1/histories/attendance_image_upload', formData, config)
        .then(function(response) {
           console.log(response);
+          this.$router.push({ path: "/results/result"});
            // response 処理
        })
        .catch(function(error) {
