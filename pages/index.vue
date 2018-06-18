@@ -1,8 +1,8 @@
 <template lang="pug">
-div
-  el-button(type="primary" @click='goClassSelect')#button 授業選択
+div.container
+  el-button(type="primary" @click='goClassSelect').buttonHome 授業選択
 
-  el-button(type="primary")#button 学生一覧
+  el-button(type="primary").buttonHome 学生一覧
 
 </template>
 
@@ -22,5 +22,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+  .container{
+  display: flex;
+  }
+  .buttonHome{
+    border-radius: 40px;
+    padding: 60px;
+    margin: 60px !important;
+    font-size: 30px;
+  }
 </style>
