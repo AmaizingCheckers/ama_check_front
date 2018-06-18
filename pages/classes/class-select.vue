@@ -4,60 +4,60 @@ div
   div.teacher 〇〇先生
 
   div.divselect
-    el-select(v-model='subjectvalue', placeholder='授業科目を選択してください')
-      el-option(v-for='item in subjects', :key='item.subjectvalue', :label='item.subjectlabel', :value='item.subjectvalue')
+    el-select(v-model='classValue', placeholder='クラスを選択してください')
+      el-option(v-for='item in classrooms', :key='item.id', :label='item.name', :value='item.id')
 
   div.divselect
-    el-select(v-model='classvalue', placeholder='クラスを選択してください')
-      el-option(v-for='item in classes', :key='item.classvalue', :label='item.classlabel', :value='item.classvalue')
+    el-select(v-model='subjectValue', placeholder='授業科目を選択してください')
+      el-option(v-if='classroom.subjects' v-for='item in classroom.subjects', :key='item.id', :label='item.name', :value='item.id')
 
   el-low
-    el-button(type="primary").buttonClass 出席確認
+    el-button(type="primary" @click='goClass').buttonClass 出席確認
 
 </template>
 
 
 <script>
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
   data: () => ({
-    subjects: [{
-      subjectvalue: 'Option1',
-      subjectlabel: 'Option1'
-    }, {
-      subjectvalue: 'Option2',
-      subjectlabel: 'Option2'
-    }, {
-      subjectvalue: 'Option3',
-      subjectlabel: 'Option3'
-    }, {
-      subjectvalue: 'Option4',
-      subjectlabel: 'Option4'
-    }, {
-      subjectvalue: 'Option5',
-      subjectlabel: 'Option5'
-    }],
-    subjectvalue: '',
-
-    classes: [{
-      classvalue: 'Option1',
-      classlabel: 'Option1'
-    }, {
-      classvalue: 'Option2',
-      classlabel: 'Option2'
-    }, {
-      classvalue: 'Option3',
-      classlabel: 'Option3'
-    }, {
-      classvalue: 'Option4',
-      classlabel: 'Option4'
-    }, {
-      classvalue: 'Option5',
-      classlabel: 'Option5'
-    }],
-    classvalue: ''
+    classValue: null,
+    subjectValue: null
+    //classSellect: null
   }),
 
+  created () {
+    this.indexClassrooms()
+  },
+
+  computed: {
+    ...mapGetters( 'classroom', ['classroom', 'classrooms'] )
+  },
+
+  watch: {
+    async classValue (val, oldVal) {
+      this.subjectValue = null
+      await this.findClassroom({classroomId: this.classValue})
+    }
+  },
+
+  methods: {
+    ...mapActions( 'classroom', {'indexClassrooms': 'index', 'findClassroom': 'find'}),
+
+    //...mapMutations( 'classroom', {}),
+      
+    goClass () {
+      this.$router.push({
+        path: '/', //'/uploads/photographing',
+        query: {
+          classId: classValue,
+          subjectId: subjectValue
+        }
+      });
+    }
+    
+  },
 }
 </script>
 

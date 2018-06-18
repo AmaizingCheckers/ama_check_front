@@ -10,11 +10,11 @@ export default {
   data: () => ({
 
   }),
-  /*methods:{
-    goHome(){
-      this.$router.push({ path: ""});
+  methods:{
+    goHome () {
+      this.$router.push({ path: '/' });
     }
-  }*/
+  }
 }
 </script>
 
@@ -36,4 +36,9 @@ export default {
   margin-right: 20px;
   }
 
+  /*@media( max-width: 599px){
+    #Header{
+      height: 100px;
+    }
+  }*/
 </style>
