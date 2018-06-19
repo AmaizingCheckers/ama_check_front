@@ -18,12 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-header {
-  padding: 0;
-  height: 80px !important;
-  background-color: #70BDFF;
-}
-.el-main{
-    padding: 100px;
-  }
+
 </style>

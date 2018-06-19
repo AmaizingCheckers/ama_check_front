@@ -4,3 +4,71 @@
   font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   margin: 0;
 }
+
+//default
+  .el-header {
+    padding: 0;
+    height: 80px !important;
+    background-color: #70BDFF;
+  }
+  .el-main{
+    padding: 100px;
+  }
+
+//heder
+  #Header{
+  margin: 20px;
+  }
+
+  #Header-Title{
+  color: #fff;
+  font-size: 27px;
+  margin-left: 20px;
+  }
+
+  #Header-Logout{
+  color: #fff;
+  float: right;
+  font-size: 27px;
+  margin-right: 20px;
+  }
+
+  /*@media( max-width: 599px){
+    #Header{
+      height: 100px;
+    }
+  }*/
+
+//index
+  .container{
+    display: flex;
+  }
+
+  .buttonHome{
+    border-radius: 40px;
+    padding: 60px;
+    margin: 60px !important;
+    font-size: 30px;
+  }
+
+//class-select
+  .divselect{
+    padding: 50px;
+    padding-left: 100px;
+  }
+  .teacher{
+    font-size: 30px;
+    margin: 10px;
+  }
+  .buttonClass{
+    border-radius: 10px;
+    width: 180px;
+    float: right;
+    font-size: 20px;
+  }
+  .el-select{
+    display: block;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
