@@ -19,26 +19,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  #Header{
-  margin: 20px;
-  }
-
-  #Header-Title{
-  color: #fff;
-  font-size: 27px;
-  margin-left: 20px;
-  }
-
-  #Header-Logout{
-  color: #fff;
-  float: right;
-  font-size: 27px;
-  margin-right: 20px;
-  }
-
-  /*@media( max-width: 599px){
-    #Header{
-      height: 100px;
-    }
-  }*/
+  
 </style>

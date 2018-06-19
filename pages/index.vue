@@ -22,13 +22,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container{
-  display: flex;
-  }
-  .buttonHome{
-    border-radius: 40px;
-    padding: 60px;
-    margin: 60px !important;
-    font-size: 30px;
-  }
+  
 </style>

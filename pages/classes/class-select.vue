@@ -53,6 +53,7 @@ export default {
         query: {
           classId: classValue,
           subjectId: subjectValue
+          
         }
       });
     }
@@ -62,24 +63,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .divselect{
-    padding: 50px;
-    padding-left: 100px;
-  }
-  .teacher{
-    font-size: 30px;
-    margin: 10px;
-  }
-  .buttonClass{
-    border-radius: 10px;
-    width: 180px;
-    float: right;
-    font-size: 20px;
-  }
-  .el-select{
-    display: block;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
 </style>
