@@ -16,16 +16,14 @@
   }
 
 //heder
-  #Header{
+#Header{
   margin: 20px;
   }
-
   #Header-Title{
   color: #fff;
   font-size: 27px;
   margin-left: 20px;
   }
-
   #Header-Logout{
   color: #fff;
   float: right;
@@ -43,7 +41,6 @@
   .container{
     display: flex;
   }
-
   .buttonHome{
     border-radius: 40px;
     padding: 60px;
@@ -124,37 +121,109 @@
     font-size: 16px;
     padding: 20px;
   }
+//result
+  .result-container{
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+  .result-list{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .el-table{
+    font-size: 17px;
+  }
+  .button-container{
+    text-align: right;
+  }
+  .el-button{
+    width: 70px;
+    font-size: 16px;
+  }
+  .dialog-comment{
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 50px;
+  }
+  .dialog-button{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .dialog-back{
+    margin-left: 60px;
+    width: 80px;
+    font-size: 16px;
+  }
+  .dialog-delete{
+    margin-right: 60px;
+    width: 80px;
+    font-size: 16px;
+  }
 //スマホ対応css
-//photographing
+//result
 @media (max-width: 599px) {
-  .upload-container{
+  .result-container{
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .result-list{
     margin-top: 5px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-bottom: 20px;
   }
-
-  .upload-image{
-    width: 100%;
+  .el-table{
+    font-size: 13px;
   }
-
-  .camera-btn{
-    background: #409EFF;
-    padding: 5px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: inline-block;
+  .el-button{
+    margin-left: 27px;
+    width: 53px;
+    font-size: 11px;
   }
-
-  .camera-icon{
-    width: 70%;
-    padding: 3px;
-    margin-top: 3.5px;
-  }
-
-  .upload-btn{
-    border-radius: 20px;
-    font-size: 14px;
+  .dialog-comment{
+    font-size: 10px;
+    text-align: center;
     padding: 16px;
+    margin-bottom: 50px;
+  }
+  .dialog-back{
+    width: 50px;
+    font-size: 12px;
+  }
+  .dialog-delete{
+    width: 50px;
+    font-size: 12px;
+  }
+
+  //photographing
+  @media (max-width: 599px) {
+    .upload-container{
+      margin-top: 5px;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    .upload-image{
+      width: 100%;
+    }
+    .camera-btn{
+      background: #409EFF;
+      padding: 5px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .camera-icon{
+      width: 70%;
+      padding: 3px;
+      margin-top: 3.5px;
+    }
+    .upload-btn{
+      border-radius: 20px;
+      font-size: 14px;
+      padding: 16px;
   }
 }
