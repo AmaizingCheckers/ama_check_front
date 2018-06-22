@@ -1,4 +1,4 @@
-export default function ({ req, $axios, redirect }) {
+export default function ({ req, $axios, redirect, store, defaults}) {
   $axios.setHeader('X-Requested-With', 'XMLHttpRequest')
 
   $axios.onRequest(config => {
