@@ -13,161 +13,64 @@ div.upload-container
 </template>
 
 <script>
-import axios from 'axios';
-import { mapAction,mapGetters } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 export default {
   data: () => ({
-    image: '',
-    uploadFile: null,
-    subject_id: null
+    image: null,
+    uploadImage: null,
+    subjectId: 1,
   }),
-  asyncData(context) {
-    return {
-      // queryデータ取得
-      subject_id: context.query['subjectId']
+
+  created(){
+    //this.subjectId = this.$route.query('subjectId')
+    this.setSubject(this.subjectId)
+  },
+
+  watch: {
+    uploadImage(val, oldVal){
+      this.uploadImage = val
+      this.setImage(this.uploadImage)
+
     }
   },
+
   methods: {
+    ...mapMutations('upload', ['setImage','setSubject']),
+    ...mapActions('upload', ['postImage']),
+
     //画像ファイル保存
     onFileChange: function(e){
-      var files = e.target.files || e.dataTransfer.files;
+      var files = e.target.files || e.dataTransfer.files
       if (!files.length) {
-        return;
+        return
       }
       if (!files[0].type.match('image.*')) {
-        return;
+        return
       }
-      this.createImage(files[0]);
-      this.uploadFile = files[0];
+      this.createImage(files[0])
+      this.uploadImage = files[0]
     },
+
     //画像ファイル表示
     createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+      var image = new Image()
+      var reader = new FileReader()
+      var vm = this
       reader.onload = function(e) {
-          vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
+          vm.image = e.target.result
+      }
+      reader.readAsDataURL(file)
     },
-    //画像ファイル送信
-    submitImage: function(e) {
-      let  formData = new FormData();
-      formData.append('subject_id', this.subject_id);
-      formData.append('image', this.uploadFile);
-      console.log(formData.get('subject_id'));
-      console.log(formData.get('image'));
-      let config = {
-          headers: {
-              'content-type': 'multipart/form-data'
-          }
-      };
-      axios
-       .post('/api/v1/histories/attendance_image_upload', formData, config)
-       .then(function(response) {
-          console.log(response);
-          this.$router.push({ path: "/results/result"});
-           // response 処理
-       })
-       .catch(function(error) {
-           // error 処理
-       })
+
+    //結果画面へ遷移
+    submitImage () {
+      this.postImage()
+      //this.$router.push({ path: "/classes/uploads/results/result"});
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.upload-container{
-  margin-top: 40px;
-  margin-left: 33%;
-  margin-right: 33%;
 
-}
-
-.upload-block{
-  padding: 30%;
-  text-align: center;
-  border-style: dashed;
-  border-color: #70BDFF;
-}
-
-.el-icon-plus{
-  font-size: 35px;
-  color: #70BDFF;
-}
-
-.upload-image{
-  width: 100%;
-}
-
-.input{
-  display: none;
-}
-
-.camera-block{
-  margin-top: 30px;
-  font-size: 5px;
-  text-align: center;
-}
-
-.camera-btn{
-  background: #409EFF;
-  padding: 10px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.camera-icon{
-  width: 80%;
-  padding: 2.5px;
-}
-
-.btn-block{
-  margin-top: 30px;
-  text-align: center;
-}
-
-.upload-btn{
-  border-radius: 25px;
-  font-size: 16px;
-  padding: 25px;
-}
-
-//スマホ対応css
-@media (max-width: 599px) {
-  .upload-container{
-    margin-top: 30px;
-    margin-left: 28%;
-    margin-right: 28%;
-  }
-
-  .upload-image{
-    width: 100%;
-  }
-
-  .camera-btn{
-    background: #409EFF;
-    padding: 5px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
-  .camera-icon{
-    width: 70%;
-    padding: 3px;
-    margin-top: 3.5px;
-  }
-
-  .upload-btn{
-    border-radius: 15px;
-    font-size: 14px;
-    padding: 16px;
-  }
-
-}
 </style>

@@ -72,3 +72,89 @@
     margin-left: auto;
     margin-right: auto;
   }
+  #Link-Text{
+  text-decoration: none;
+  color: #fff
+  }
+
+  //photographing
+  .upload-container{
+    margin-left: 33%;
+    margin-right: 33%;
+  }
+  .upload-block{
+    padding: 30%;
+    text-align: center;
+    border-style: dashed;
+    border-color: #70BDFF;
+  }
+  .el-icon-plus{
+    font-size: 35px;
+    color: #70BDFF;
+  }
+  .upload-image{
+    width: 100%;
+  }
+  .input{
+    display: none;
+  }
+  .camera-block{
+    margin-top: 40px;
+    font-size: 5px;
+    text-align: center;
+  }
+  .camera-btn{
+    background: #409EFF;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .camera-icon{
+    width: 80%;
+    padding: 2.5px;
+  }
+  .btn-block{
+    margin-top: 40px;
+    text-align: center;
+  }
+  .upload-btn{
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 20px;
+  }
+//スマホ対応css
+//photographing
+@media (max-width: 599px) {
+  .upload-container{
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .upload-image{
+    width: 100%;
+  }
+
+  .camera-btn{
+    background: #409EFF;
+    padding: 5px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .camera-icon{
+    width: 70%;
+    padding: 3px;
+    margin-top: 3.5px;
+  }
+
+  .upload-btn{
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 16px;
+  }
+}
