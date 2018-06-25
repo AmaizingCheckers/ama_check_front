@@ -26,7 +26,6 @@ export const actions = {
       console.log(params.get('image'))
       console.log(params.get('subject_id'))
       const result = await dispatch('api/post', {url: '/histories/attendance_image_upload', params: params}, {root: true})
-      console.log(result.id)
       commit('setHistory', result.id)
     } catch (e) {
        throw e
