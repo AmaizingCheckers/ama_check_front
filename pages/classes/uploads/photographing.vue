@@ -18,12 +18,12 @@ export default {
   data: () => ({
     image: null,
     uploadImage: null,
-    subjectId: 1,
+    subjectId: null,
   }),
 
   created(){
-    //this.subjectId = this.$route.query('subjectId')
-    this.setSubject(this.subjectId)
+    this.subjectId = this.$route.query('subjectId')
+    //this.setSubject(this.subjectId)
   },
 
   watch: {
@@ -65,7 +65,7 @@ export default {
     //結果画面へ遷移
     submitImage () {
       this.postImage()
-      //this.$router.push({ path: "/classes/uploads/results/result"});
+      this.$router.push({ path: "/classes/uploads/results/result"});
     }
   }
 }
