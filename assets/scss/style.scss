@@ -117,6 +117,7 @@
     text-align: center;
   }
   .upload-btn{
+    width: 35%;
     border-radius: 20px;
     font-size: 16px;
     padding: 20px;
@@ -125,11 +126,11 @@
   .result-container{
     padding-left: 60px;
     padding-right: 60px;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
   .result-list{
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 30px;
   }
   .el-table{
@@ -138,9 +139,12 @@
   .button-container{
     text-align: right;
   }
-  .el-button{
+  .absence-button{
     width: 70px;
     font-size: 16px;
+  }
+  .el-dialog{
+    width: 40%;
   }
   .dialog-comment{
     font-size: 18px;
@@ -163,67 +167,83 @@
     font-size: 16px;
   }
 //スマホ対応css
-//result
 @media (max-width: 599px) {
+  .el-main {
+    padding: 0px;
+  }
+  //photographing
+  .upload-container{
+    margin-top: 50px;
+    margin-left: 28%;
+    margin-right: 28%;
+  }
+  .upload-image{
+    width: 100%;
+  }
+  .camera-btn{
+    background: #409EFF;
+    padding: 5px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .camera-icon{
+    width: 70%;
+    padding: 3px;
+    margin-top: 3.5px;
+  }
+  .upload-btn{
+    width: 80%;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  //result
   .result-container{
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-left: 5px;
-    margin-right: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+
   }
   .result-list{
-    margin-top: 5px;
+    margin-top: 30px;
     margin-bottom: 20px;
   }
   .el-table{
     font-size: 13px;
   }
-  .el-button{
+  .absence-button{
     margin-left: 27px;
-    width: 53px;
+    width: 55px;
     font-size: 11px;
   }
+  .el-dialog{
+    width: 80%;
+  }
   .dialog-comment{
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
-    padding: 16px;
-    margin-bottom: 50px;
+    padding: 2px;
+    margin-bottom: 40px;
+  }
+  .dialog-button{
+    text-align: center;
+    margin-bottom: 10px;
   }
   .dialog-back{
-    width: 50px;
-    font-size: 12px;
+    margin-left: 20px;
+    width: 65px;
+    font-size: 11px;
+    padding: 9px;
   }
   .dialog-delete{
-    width: 50px;
-    font-size: 12px;
-  }
+    margin-right: 20px;
+    width: 65px;
+    font-size: 11px;
+    padding: 9px;
 
-  //photographing
-  @media (max-width: 599px) {
-    .upload-container{
-      margin-top: 5px;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-    .upload-image{
-      width: 100%;
-    }
-    .camera-btn{
-      background: #409EFF;
-      padding: 5px;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-    .camera-icon{
-      width: 70%;
-      padding: 3px;
-      margin-top: 3.5px;
-    }
-    .upload-btn{
-      border-radius: 20px;
-      font-size: 14px;
-      padding: 16px;
   }
 }

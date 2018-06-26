@@ -1,7 +1,7 @@
 export const state = () => ({
   uploadImage: null,
   subjectId: null,
-  historyId:null
+  historyId: 1
 })
 
 export const mutations = {
@@ -14,6 +14,12 @@ export const mutations = {
   },
   setHistory (state, historyId) {
     state.historyId = historyId
+  }
+}
+
+export const getters = {
+  getHistory(state){
+    return state.historyId
   }
 }
 

@@ -11,40 +11,44 @@ div.result-container
     el-table-column
       template(v-for="(row,index) in tableData", slot-scope='scope')
         div.button-container
-          el-button(size='mini', type='danger', @click='handleDelete(scope.row), centerDialogVisible = true') 欠席
+          el-button.absence-button(size='mini', type='danger', @click='handleDelete(scope.$index, scope.row), centerDialogVisible = true') 欠席
 
-  el-dialog(:visible.sync='centerDialogVisible', width='45%')
+  el-dialog(:visible.sync='centerDialogVisible')
     div.dialog-comment
-      span この学生を欠席してもよろしいですか？
+      span この学生を欠席にしてもよろしいですか？
     div.dialog-button
-      el-button.dialog-delete(type='danger', @click='handleDelete(scope.row), centerDialogVisible = false') 欠席
+      el-button.dialog-delete(type='danger', @click='deleteStudent(), centerDialogVisible = false') 欠席
       el-button.dialog-back(type='primary', @click='centerDialogVisible = false') 戻る
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
       centerDialogVisible: false,
       historyId: null,
-      tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人']
+      tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人'],
+      deleteIndex: null
     }
   },
   created () {
+    this.historyId = this.getHistory
+    this.findResult({historyId: this.historyId})
   },
-
   computed: {
-    ...mapActions('result', ['find']),
-    ...mapGetters('resut', ['getResult','getHistory'] )
-
+    ...mapGetters('upload', ['getHistory'], 'result', ['getResult'])
   },
-
   methods: {
-
-
-    handleDelete(row) {
-      alert(row);
+    ...mapActions('result', ['findResult']),
+    //欠席添字保持
+    handleDelete(index, row) {
+      this.deleteIndex = index
+    },
+    //欠席実行
+    deleteStudent(){
+      console.log(this.deleteIndex)
+      this.tableData.splice(this.deleteIndex,1)
     }
   }
 }
