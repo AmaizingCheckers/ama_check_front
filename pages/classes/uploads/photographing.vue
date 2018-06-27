@@ -23,7 +23,7 @@ export default {
 
   created(){
     this.subjectId = this.$route.query('subjectId')
-    //this.setSubject(this.subjectId)
+    this.setSubject(this.subjectId)
   },
 
   watch: {

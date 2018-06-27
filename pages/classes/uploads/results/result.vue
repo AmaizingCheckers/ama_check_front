@@ -22,14 +22,14 @@ div.result-container
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data() {
     return {
       centerDialogVisible: false,
       historyId: null,
-      tableData: ['川田大秀','松永拓也','橋口巧','佐竹直人'],
-      deleteIndex: null
+      deleteIndex: null,
+      deleteTable: []
     }
   },
   created () {
@@ -37,18 +37,24 @@ export default {
     this.findResult({historyId: this.historyId})
   },
   computed: {
-    ...mapGetters('upload', ['getHistory'], 'result', ['getResult'])
+    ...mapGetters('upload',['getHistory']),
+    ...mapGetters('result', ['getResult']),
+    tableData(){
+      return this.getResult
+    }
   },
   methods: {
+    ...mapMutations('result', ['deleteResult']),
     ...mapActions('result', ['findResult']),
-    //欠席添字保持
+    //欠席データ保持
     handleDelete(index, row) {
       this.deleteIndex = index
     },
     //欠席実行
     deleteStudent(){
-      console.log(this.deleteIndex)
-      this.tableData.splice(this.deleteIndex,1)
+      this.deleteTable[0] = this.tableData
+      this.deleteTable[1] = this.deleteIndex
+      this.deleteResult(this.deleteTable)
     }
   }
 }

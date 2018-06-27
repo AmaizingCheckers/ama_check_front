@@ -1,7 +1,7 @@
 export const state = () => ({
   uploadImage: null,
   subjectId: null,
-  historyId: 1
+  historyId: 13
 })
 
 export const mutations = {
