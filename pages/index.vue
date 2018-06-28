@@ -1,9 +1,9 @@
 <template lang="pug">
+
 div.container
   el-button(type="primary" @click='goClassSelect').buttonHome 授業選択
 
   el-button(type="primary").buttonHome 学生一覧
-
 </template>
 
 
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  
+
 </style>
