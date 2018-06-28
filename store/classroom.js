@@ -1,7 +1,6 @@
 export const state = () => ({
   classroom: [],
   classrooms: []
-  //classselect:[]
 })
 
 export const getters = {
@@ -11,11 +10,7 @@ export const getters = {
 
   classrooms (state) {
     return state.classrooms
-  }/*,
-
-  classselect (state) {
-    return state.classselect
-  }*/
+  }
 }
 
 export const mutations = {
@@ -25,11 +20,7 @@ export const mutations = {
 
   setClassrooms (state, classrooms) {
     state.classrooms = classrooms
-  }/*,
-
-  setClassSelect (state, classselect) {
-    state.classselect = classselect
-  }*/
+  }
 }
 
 export const actions = {
