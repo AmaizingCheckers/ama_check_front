@@ -12,7 +12,7 @@ div
       el-option(v-if='classroom.subjects' v-for='item in classroom.subjects', :key='item.id', :label='item.name', :value='item.id')
 
   el-low
-    el-button(type="primary" @click='goClass').buttonClass 出席確認
+    el-button(type="primary" @click='goPhoto').buttonClass 出席確認
 
 </template>
 
@@ -24,7 +24,6 @@ export default {
   data: () => ({
     classValue: null,
     subjectValue: null
-    //classSellect: null
   }),
 
   created () {
@@ -44,16 +43,13 @@ export default {
 
   methods: {
     ...mapActions( 'classroom', {'indexClassrooms': 'index', 'findClassroom': 'find'}),
-
-    //...mapMutations( 'classroom', {}),
       
-    goClass () {
+    goPhoto () {
       this.$router.push({
-        path: '/', //'/uploads/photographing',
+        path: '/classes/uploads/photographing',
         query: {
-          classId: classValue,
-          subjectId: subjectValue
-          
+          classId: this.classValue,
+          subjectId: this.subjectValue          
         }
       });
     }
