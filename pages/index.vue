@@ -3,7 +3,7 @@
 div.container
   el-button(type="primary" @click='goClassSelect').buttonHome 授業選択
 
-  el-button(type="primary").buttonHome 学生一覧
+  el-button(type="primary" disabled).buttonHome 学生一覧
 </template>
 
 
