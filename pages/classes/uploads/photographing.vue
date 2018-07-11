@@ -22,7 +22,7 @@ export default {
   }),
 
   created(){
-    this.subjectId = this.$route.query('subjectId')
+    this.subjectId = this.$route.query.subjectId
     this.setSubject(this.subjectId)
   },
 

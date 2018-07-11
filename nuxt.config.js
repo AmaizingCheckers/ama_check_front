@@ -23,7 +23,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['element-ui'],
+    vendor: ['axios', 'element-ui'],
     /*
     ** Run ESLint on save
     */
@@ -40,10 +40,11 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/dotenv',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/font-awesome',
   ],
   plugins: [
-    { src: '~plugins/element-ui', ssr: true },
+    { src: '~plugins/element-ui', ssr: false },
     { src: '~plugins/axios', ssr: false }
   ],
   css: [

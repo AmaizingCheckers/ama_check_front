@@ -1,78 +1,206 @@
 @charset "utf-8";
+$color-sky-blue: #70BDFF;
+$color-thick-sky-blue: #3fa5fd;
 
 *{
   font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
   margin: 0;
 }
 
-//default
-  .el-header {
-    padding: 0;
-    height: 80px !important;
-    background-color: #70BDFF;
-  }
-  .el-main{
-    padding: 100px;
-  }
+// global
+.error-msg {
+  font-weight: bold;
+  text-align: center;
+  color: #ff4848;
+}
 
-//heder
+.el-button--primary, {
+  background: $color-sky-blue;
+  border-color: $color-sky-blue;
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus{
+  background: $color-thick-sky-blue;
+  border-color: $color-thick-sky-blue;
+}
+
+// align
+.alignC {
+  text-align: center;
+}
+
+.alignL {
+  text-align: left;
+}
+
+.alignR {
+  text-align: right;
+}
+
+// max-width
+.mw-100 {
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.mw-200 {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.mw-300 {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.mw-600 {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// width
+.w-100 {
+  width: 100px;
+  margin: 0 auto;
+}
+
+.w-200 {
+  width: 200px;
+  margin: 0 auto;
+}
+
+// pLR
+.pLR20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+// pTB
+.pTB10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pTB20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.pTB30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.pTB40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+// margin-bottom
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+//header
+.el-header {
+  background-color: #70BDFF;
+}
+
 #Header{
-  margin: 20px;
-}
-#Header-Title{
-  color: #fff;
-  font-size: 27px;
-  margin-left: 20px;
-}
-#Header-Logout{
-  color: #fff;
-  float: right;
-  font-size: 27px;
-  margin-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &-Title{
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &-Logout{
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    padding-top: 4.5px;
+  }
 }
 
-  /*@media( max-width: 599px){
-    #Header{
-      height: 100px;
-    }
-  }*/
+@media( max-width: 599px){
+  .el-header {
+    padding: 0 10px;
+  }
+}
 
 //index
-  .container{
-    display: flex;
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.buttonHome{
+  border-radius: 40px;
+  padding: 60px;
+  margin: 50px !important;
+  font-size: 30px;
+}
+
+@media (max-width: 599px) {
+  .container {
+    margin-top: 30px;
   }
-  .buttonHome{
-    border-radius: 40px;
-    padding: 60px;
-    margin: 60px !important;
-    font-size: 30px;
+  .buttonHome {
+    margin: 0 auto !important;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px !important;
   }
+}
 
 //class-select
-  .divselect{
-    padding: 50px;
-    padding-left: 100px;
-  }
-  .teacher{
-    font-size: 30px;
-    margin: 10px;
-  }
-  .buttonClass{
-    border-radius: 10px;
-    width: 180px;
-    float: right;
+.divselect{
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.teacher{
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.buttonClass{
+  border-radius: 10px;
+  float: right;
+  button {
+    padding: 14px 26px;
     font-size: 20px;
   }
-  .el-select{
-    display: block;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+}
+.el-select{
+  display: block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#Link-Text{
+text-decoration: none;
+color: #fff
+}
+
+@media (max-width: 599px) {
+  .teacher {
+    text-align: center;
+    margin-top: 30px;
   }
-  #Link-Text{
-  text-decoration: none;
-  color: #fff
+  .buttonClass {
+    float: none;
+    text-align: center;
   }
+}
 
   //photographing
   .upload-container{
@@ -117,8 +245,6 @@
     text-align: center;
   }
   .upload-btn{
-    width: 35%;
-    border-radius: 20px;
     font-size: 16px;
     padding: 20px;
   }
@@ -194,9 +320,7 @@
     margin-top: 3.5px;
   }
   .upload-btn{
-    width: 80%;
-    border-radius: 20px;
-    font-size: 14px;
+    font-size: 16px;
     padding: 16px;
   }
 

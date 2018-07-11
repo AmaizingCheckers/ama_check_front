@@ -1,18 +1,21 @@
 <template lang="pug">
 div
 
-  div.teacher 〇〇先生
+  .teacher {{ getUserName }}先生
 
-  div.divselect
+  .divselect
     el-select(v-model='classValue', placeholder='クラスを選択してください')
       el-option(v-for='item in classrooms', :key='item.id', :label='item.name', :value='item.id')
 
-  div.divselect
+  .divselect
     el-select(v-model='subjectValue', placeholder='授業科目を選択してください')
       el-option(v-if='classroom.subjects' v-for='item in classroom.subjects', :key='item.id', :label='item.name', :value='item.id')
 
-  el-low
-    el-button(type="primary" @click='goPhoto').buttonClass 出席確認
+  .error-msg.mb30(v-if="error")
+    span ※クラスと授業科目を選択してください
+
+  .buttonClass
+    el-button(type="primary" @click='goPhoto') 出席確認
 
 </template>
 
@@ -23,7 +26,8 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data: () => ({
     classValue: null,
-    subjectValue: null
+    subjectValue: null,
+    error: false
   }),
 
   created () {
@@ -31,6 +35,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters('app', ['getUserName']),
     ...mapGetters( 'classroom', ['classroom', 'classrooms'] )
   },
 
@@ -43,17 +48,21 @@ export default {
 
   methods: {
     ...mapActions( 'classroom', {'indexClassrooms': 'index', 'findClassroom': 'find'}),
-      
+
     goPhoto () {
+      if (!this.classValue || !this.subjectValue) {
+        this.error = true
+        return
+      }
       this.$router.push({
         path: '/classes/uploads/photographing',
         query: {
           classId: this.classValue,
-          subjectId: this.subjectValue          
+          subjectId: this.subjectValue
         }
       });
     }
-    
+
   },
 }
 </script>
