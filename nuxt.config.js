@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 module.exports = {
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -40,11 +41,10 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/dotenv',
-    '@nuxtjs/axios',
-    '@nuxtjs/font-awesome',
+    '@nuxtjs/axios'
   ],
   plugins: [
-    { src: '~plugins/element-ui', ssr: false },
+    { src: '~plugins/element-ui', ssr: true },
     { src: '~plugins/axios', ssr: false }
   ],
   css: [
