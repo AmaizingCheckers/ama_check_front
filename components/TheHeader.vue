@@ -1,10 +1,10 @@
 <template lang="pug">
 div#Header
-  img(src="~/assets/images/logo.png")
+  img.logo(src="~/assets/images/logo.png")
   span#Header-Title(@click='goHome') アメチェク！
-  span#Header-Logout(v-if="loginState" @click="logout")
-    i.fa.fa-sign-out
-    | ログアウト
+  #Header-Logout(v-if="loginState" @click="logout")
+    img.exit(src="~/assets/images/exit.png")
+    span ログアウト
 
 </template>
 
@@ -37,11 +37,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
+img.logo {
   position: relative;
   width: 25px;
   top: 3px;
   margin-right: 10px;
+}
+img.exit {
+  position: relative;
+  width: 25px;
+  top: 5px;
 }
 #Header-Title,
 #Header-Logout {

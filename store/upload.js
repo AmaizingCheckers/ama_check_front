@@ -12,13 +12,13 @@ export const mutations = {
   setSubject (state, subjectId) {
     state.subjectId = subjectId
   },
-  setHistory (state, historyId) {
+  setHistoryId (state, historyId) {
     state.historyId = historyId
   }
 }
 
 export const getters = {
-  getHistory(state){
+  getHistoryId (state){
     return state.historyId
   }
 }
@@ -29,12 +29,10 @@ export const actions = {
       let params = new FormData()
       params.append('image', state.uploadImage)
       params.append('subject_id', state.subjectId)
-      console.log(params.get('image'))
-      console.log(params.get('subject_id'))
       const result = await dispatch('api/post', {url: '/histories/attendance_image_upload', params: params}, {root: true})
-      commit('setHistory', result.id)
+      commit('setHistoryId', result.id)
     } catch (e) {
-       throw e
+      throw e
     }
   }
 }

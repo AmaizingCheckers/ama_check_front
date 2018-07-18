@@ -15,7 +15,7 @@ export default {
   }),
   methods:{
     goClassSelect(){
-      this.$router.push({ path: "/classes/class-select"});
+      this.$router.push({ path: "/classes/select"});
     }
   }
 }

@@ -33,11 +33,11 @@ export default {
     }
   },
   created () {
-    this.historyId = this.getHistory
+    this.historyId = this.getHistoryId
     this.findResult({historyId: this.historyId})
   },
   computed: {
-    ...mapGetters('upload',['getHistory']),
+    ...mapGetters('upload', ['getHistoryId']),
     ...mapGetters('result', ['getResult']),
     tableData(){
       return this.getResult

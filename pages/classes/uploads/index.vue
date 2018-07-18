@@ -63,9 +63,9 @@ export default {
     },
 
     //結果画面へ遷移
-    submitImage () {
-      this.postImage()
-      this.$router.push({ path: "/classes/uploads/results/result"});
+    async submitImage () {
+      await this.postImage()
+      this.$router.push({ path: "/classes/results"});
     }
   }
 }
