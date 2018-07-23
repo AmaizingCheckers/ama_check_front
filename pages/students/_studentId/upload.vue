@@ -23,7 +23,7 @@ export default {
 
   created(){
     this.studentId = this.$route.params.studentId
-    this.setStudent(this.studentId)
+    this.setStudentId(this.studentId)
   },
 
   watch: {
@@ -35,7 +35,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations('student', ['setImage','setStudent']),
+    ...mapMutations('student', ['setImage','setStudentId']),
     ...mapActions('student', ['postImage']),
 
     //画像ファイル保存
@@ -62,7 +62,7 @@ export default {
       reader.readAsDataURL(file)
     },
 
-    //結果画面へ遷移
+    //学生詳細画面へ遷移
     async submitImage () {
       await this.postImage()
       this.$router.push(`/students/${this.studentId}`);

@@ -55,12 +55,8 @@ export default {
         return
       }
       this.$router.push({
-        path: '/classes/uploads',
-        query: {
-          classId: this.classValue,
-          subjectId: this.subjectValue
-        }
-      });
+        path: `/subjects/${this.subjectValue}/classes/uploads`
+      })
     }
 
   },

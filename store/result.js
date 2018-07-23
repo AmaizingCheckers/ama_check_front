@@ -1,37 +1,37 @@
 export const state = () => ({
-  result: []
+  attendanceResult: []
 })
 
 export const mutations = {
-  setResult (state, result) {
-    state.result = result
+  setAttendanceResult (state, attendanceResult) {
+    state.attendanceResult = attendanceResult
   },
-  deleteResult (state, result) {
-    var tableData = result[0]
-    var deleteIndex = result[1]
+  deleteAttendanceResult (state, attendanceResult) {
+    var tableData = attendanceResult[0]
+    var deleteIndex = attendanceResult[1]
     tableData.splice(deleteIndex,1)
-    state.result = tableData
+    state.attendanceResult = tableData
   }
 }
 
 export const getters = {
-  getResult(state){
-    return state.result
+  getAttendanceResult(state){
+    return state.attendanceResult
   }
 }
 
 export const actions = {
-  async findResult ({dispatch, commit}, {historyId}) {
+  async findAttendanceResult ({dispatch, commit}, {historyId}) {
     try {
-      const result = await dispatch('api/get', {url: `/history_students/attendance_result?history_id=${historyId}`, params: []}, {root: true})
+      const attendanceResult = await dispatch('api/get', {url: `/history_students/attendance_result?history_id=${historyId}`, params: []}, {root: true})
       var students = []
-      for(var i = 0; i < result.length; i++){
-          students[i] = result[i].students[0].name
+      for(var i = 0; i < attendanceResult.length; i++){
+          students[i] = attendanceResult[i].students[0].name
       }
-      commit('setResult', students)
+      commit('setAttendanceResult', students)
       return students
     } catch (e) {
-       throw e
+      throw e
     }
   }
 }

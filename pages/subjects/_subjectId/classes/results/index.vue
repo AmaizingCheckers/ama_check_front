@@ -2,15 +2,13 @@
 div.result-container
   h1.result-list 出席者一覧
     el-button.roster-button(type='primary', icon='el-icon-tickets', circle, @click='outerVisible = true')
-  el-table(:data='tableData')
-    el-table-column(label='No', width='80%')
-      template(v-for="(row,index) in tableData", slot-scope='scope')
-        span {{ scope.$index + 1 }}
+  el-table(:data='getAttendanceResult')
+    el-table-column(type="index", width='80%')
     el-table-column(label='名前')
-      template(v-for="(row,index) in tableData", slot-scope='scope')
+      template(slot-scope='scope')
         span {{ scope.row }}
     el-table-column
-      template(v-for="(row,index) in tableData", slot-scope='scope')
+      template(v-for="(row,index) in getAttendanceResult", slot-scope='scope')
         div.button-container
           el-button.absence-button(size='mini', type='danger', @click='handleDelete(scope.$index, scope.row), centerDialogVisible = true') 欠席
   el-dialog(:visible.sync='centerDialogVisible')
@@ -19,7 +17,7 @@ div.result-container
     div.dialog-button
       el-button.dialog-delete(type='danger', @click='deleteStudent(), centerDialogVisible = false') 欠席
       el-button.dialog-back(type='primary', @click='centerDialogVisible = false') 戻る
-  ClassRoster(:tableData="tableData" :outerVisible="outerVisible" :toggleClassRosterModal="toggleClassRosterModal" :atendanceClasses="atendanceClasses")
+  ClassRoster(:tableData="getSubjectStudents" :outerVisible="outerVisible" :closeClassRosterModal="closeClassRosterModal" :atendanceClasses="atendanceClasses")
 </template>
 
 <script>
@@ -27,32 +25,37 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 import ClassRoster from '~/components/dialog/classRoster.vue'
 
 export default {
+  validate ({ params }) {
+    return /^\d+$/.test(params.subjectId)
+  },
   components: {
     ClassRoster,
   },
   data: () => ({
-      tableData: ['川田大秀','川田小秀','川田中秀','川田安蛇'],
       centerDialogVisible: false,
       outerVisible: false,
       historyId: null,
+      subjectId: null,
       deleteIndex: null,
-      deleteTable: [],
+      deleteTable: []
   }),
 
   created () {
+    this.subjectId = this.$route.params.subjectId
     this.historyId = this.getHistoryId
-    this.findResult({historyId: this.historyId})
+    this.findAttendanceResult({historyId: this.historyId})
+    this.findStudentsBySubject({subjectId: this.subjectId})
   },
   computed: {
     ...mapGetters('upload', ['getHistoryId']),
-    ...mapGetters('result', ['getResult']),
-    tableData(){
-      return this.getResult
-    }
+    ...mapGetters('result', ['getAttendanceResult']),
+    ...mapGetters('student', ['getSubjectStudents'])
   },
   methods: {
-    ...mapMutations('result', ['deleteResult']),
-    ...mapActions('result', ['findResult']),
+    ...mapMutations('result', ['deleteAttendanceResult']),
+    ...mapActions('result', ['findAttendanceResult']),
+    ...mapActions('student', ['findStudentsBySubject']),
+    ...mapActions('history-student', ['addStudent']),
     //欠席データ保持
     handleDelete (index, row) {
       this.deleteIndex = index
@@ -64,17 +67,24 @@ export default {
       this.deleteResult(this.deleteTable)
     },
     //名簿モーダル非表示
-    toggleClassRosterModal () {
-      this.outerVisible = !this.outerVisible
+    closeClassRosterModal () {
+      this.outerVisible = false
     },
     //学生出席
-    atendanceClasses (){
-
+    async atendanceClasses (studentId) {
+      var params = {
+        'history_id': this.historyId,
+        'student_id': studentId
+      }
+      await this.addStudent({params: params})
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.roster-button {
+  position: relative;
+  margin-left: 20px;
+}
 </style>

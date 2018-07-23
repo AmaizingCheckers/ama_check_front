@@ -2,8 +2,8 @@
 
 div.container
   el-button(type="primary" @click='goClassSelect').buttonHome 授業選択
-
-  el-button(type="primary" disabled).buttonHome 学生一覧
+  el-button(type="primary" @click="goAttendanceHistory").buttonHome 出席履歴
+  el-button(type="primary" @click="goStudents").buttonHome 学生一覧
 </template>
 
 
@@ -14,8 +14,16 @@ export default {
 
   }),
   methods:{
-    goClassSelect(){
-      this.$router.push({ path: "/classes/select"});
+    goClassSelect () {
+      this.$router.push('class-select')
+    },
+
+    goAttendanceHistory () {
+      this.$router.push('/histories')
+    },
+
+    goStudents () {
+      this.$router.push('/students')
     }
   }
 }
