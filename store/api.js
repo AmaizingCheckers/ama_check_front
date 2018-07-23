@@ -5,7 +5,7 @@ export const apiMode = {
 
 export const actions = {
   get ({ commit, state }, { url, params, mode = apiMode.fetch }) {
-    return (mode === apiMode.fetch) ? this.$axios.$get(url, params) : this.$axios.get(url, params)
+    return (mode === apiMode.fetch) ? this.$axios.$get(url, {params}) : this.$axios.get(url, {params})
   },
 
   post ({ commit, state }, { url, params, mode = apiMode.fetch }) {

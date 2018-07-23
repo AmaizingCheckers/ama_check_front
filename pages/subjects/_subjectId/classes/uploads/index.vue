@@ -15,14 +15,17 @@ div.upload-container
 <script>
 import { mapActions, mapMutations } from 'vuex'
 export default {
+  validate ({ params }) {
+    return /^\d+$/.test(params.subjectId)
+  },
   data: () => ({
     image: null,
     uploadImage: null,
-    subjectId: null,
+    subjectId: null
   }),
 
   created(){
-    this.subjectId = this.$route.query.subjectId
+    this.subjectId = this.$route.params.subjectId
     this.setSubject(this.subjectId)
   },
 
@@ -65,7 +68,7 @@ export default {
     //結果画面へ遷移
     async submitImage () {
       await this.postImage()
-      this.$router.push({ path: "/classes/results"});
+      this.$router.push({ path: `/subjects/${this.subjectId}/classes/results`});
     }
   }
 }

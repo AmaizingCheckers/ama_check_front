@@ -1,0 +1,59 @@
+<template lang="pug">
+.mw-800.pLR20
+  h1.result-list 学生新規登録
+  el-form(ref="form" :model="form" label-width="90px")
+    el-row
+      el-col(:span="24")
+        el-form-item(label="名前")
+          el-input(v-model="form.name")
+    el-row
+      el-col(:xs="24", :sm="12")
+        el-form-item(label="性別")
+          el-select(v-model.number="form.sex" placeholder="性別" style="width: 100%;")
+            el-option(label="男" value="男")
+            el-option(label="女" value="女")
+      el-col(:xs="24", :sm="12")
+        el-form-item(label="学年")
+          el-select(v-model.number="form.grade" placeholder="学年" style="width: 100%;")
+            el-option(label="1" value="1")
+            el-option(label="2" value="2")
+            el-option(label="3" value="3")
+            el-option(label="4" value="4")
+    el-row
+      el-col(:span="24")
+        el-form-item(style="text-align: right;")
+          el-button(type="primary" @click="save") 登録
+
+</template>
+
+<script>
+import { mapActions } from 'vuex'
+export default {
+  data: () => ({
+    form: {
+      name: '',
+      sex: null,
+      grade: null
+    }
+  }),
+
+  computed: {
+  },
+
+  methods: {
+    ...mapActions('student', ['saveStudent']),
+    async save () {
+      var params = {
+        name: this.form.name,
+        sex: this.form.sex === '男' ? 0 : 1,
+        gender: this.form.gender
+      }
+      await this.saveStudent({params: params})
+      this.$router.push('/students')
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+</style>
